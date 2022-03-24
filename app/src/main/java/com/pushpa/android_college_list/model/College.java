@@ -59,4 +59,15 @@ public class College {
         this.lat = lat;
         this.lang = lang;
     }
+
+    @Override
+    public String toString() {
+        return "College{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", website='" + website + '\'' +
+                ", lat=" + lat +
+                ", lang=" + lang +
+                '}';
+    }
 }

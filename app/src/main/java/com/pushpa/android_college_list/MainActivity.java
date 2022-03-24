@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 college.setLat(Double.parseDouble(lat.getText().toString()));
 
                 dbHelper.insertDataToDb(college);
+                rv.setAdapter(new CollegeAdapter(MainActivity.this, dbHelper.retrieveData()));
                 Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                 alert.dismiss();
 

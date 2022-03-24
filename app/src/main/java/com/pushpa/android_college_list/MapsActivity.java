@@ -3,6 +3,7 @@ package com.pushpa.android_college_list;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,7 +25,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        // Obtain the SupportMapFragment and get not
+        // ified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -42,12 +44,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        String value = getIntent().getExtras().getString("lat");
-        String lat = getIntent().getExtras().getString("lng");
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(Double.parseDouble(value), Double.parseDouble(lat));
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        LatLng sydney = new LatLng(getIntent().getExtras().getDouble("lat"), getIntent().getExtras().getDouble("lng") );
+        Log.e("TAG", "onMapReady: "+getIntent().getExtras().getDouble("name"+getIntent().getExtras().getDouble("lat") +getIntent().getExtras().getDouble("lng") ));
+        mMap.addMarker(new MarkerOptions().position(sydney).title(getIntent().getExtras().getString("name")));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

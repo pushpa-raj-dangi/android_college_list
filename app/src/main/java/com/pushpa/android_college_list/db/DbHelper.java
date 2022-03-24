@@ -55,9 +55,9 @@ public class DbHelper extends SQLiteOpenHelper {
             do{
                 College st = new College();
                 st.setName(cursor.getString(1));
-                st.setLang(cursor.getDouble(2));
+                st.setLang(cursor.getDouble(4));
                 st.setLat(cursor.getDouble(3));
-                st.setWebsite(cursor.getString(4));
+                st.setWebsite(cursor.getString(2));
                 data.add(st);
 
             }while(cursor.moveToNext());
